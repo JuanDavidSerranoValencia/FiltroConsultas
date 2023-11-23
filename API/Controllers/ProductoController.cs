@@ -89,4 +89,15 @@ public class ProductoController: BaseController
             await _unitOfWork.SaveAsync();
             return NoContent();
         }
+
+        
+    [HttpGet("{ProductosPorPedido}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> ProductosPorPedido()
+    {
+        var productos = await _unitOfWork.Productos.ProductosPorPedido();
+
+        return Ok(productos);
+    }
     }

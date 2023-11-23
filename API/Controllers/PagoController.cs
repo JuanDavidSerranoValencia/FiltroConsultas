@@ -92,9 +92,19 @@ public class PagoController : BaseController
     [HttpGet("{PagosPaypal}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<IEnumerable<object>>>PagosPaypal()
+    public async Task<ActionResult<IEnumerable<object>>> PagosPaypal()
     {
         var pagos = await _unitOfWork.Pagos.PagosPaypal();
+
+        return Ok(pagos);
+    }
+
+    [HttpGet("{FormasDepago}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> FormasDepago()
+    {
+        var pagos = await _unitOfWork.Pagos.FormasDepago();
 
         return Ok(pagos);
     }
